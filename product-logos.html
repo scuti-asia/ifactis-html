@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>iFactiS 製品ロゴ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --blue: #044197; --cyan: #1bdef3; --red: #c20e12; --ink: #1a2433; --ink-2: #4a5568; --ink-3: #8a94a6; --line: #e3e8f0; --bg: #f4f7fb; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", sans-serif; line-height: 1.7; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 48px 16px 72px; }
+  header { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 32px; }
+  header img { display: block; width: auto; height: 30px; }
+  h1 { margin: 14px 0 0; font-size: 30px; font-weight: 900; letter-spacing: .04em; }
+  .lead { margin: 6px 0 0; color: var(--ink-2); font-size: 14.5px; }
+  .rules { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 32px 0 0; padding: 0; list-style: none; }
+  .rules li { padding: 16px 18px; background: #fff; border-radius: 12px; font-size: 13px; color: var(--ink-2); }
+  .rules b { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; font-size: 14px; color: var(--ink); }
+  .sw { width: 14px; height: 14px; border-radius: 4px; flex: none; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
+  h2 { margin: 56px 0 18px; font-size: 13px; font-family: Barlow, sans-serif; font-weight: 600; letter-spacing: .2em; color: var(--blue); text-transform: uppercase; }
+  h2 span { margin-left: 10px; font-family: "Zen Kaku Gothic New", sans-serif; letter-spacing: .1em; color: var(--ink-2); text-transform: none; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .card { display: grid; grid-template-columns: 112px 1fr; gap: 20px; align-items: center; padding: 22px; background: #fff; border-radius: 16px; }
+  .card > img { width: 112px; height: 112px; border-radius: 28px; box-shadow: 0 10px 22px -12px rgba(4, 65, 151, .55); }
+  .name { display: flex; align-items: baseline; gap: 5px; font-family: Barlow, sans-serif; font-size: 23px; font-weight: 700; line-height: 1.15; color: var(--blue); }
+  .name small { font-size: 12px; font-weight: 600; color: var(--ink-3); }
+  .cat { font-size: 12px; font-weight: 700; color: var(--ink-3); letter-spacing: .06em; }
+  .card p { margin: 8px 0 0; font-size: 13px; color: var(--ink-2); line-height: 1.65; }
+  .sizes { display: flex; align-items: end; gap: 10px; margin-top: 12px; }
+  .sizes img { display: block; }
+  .lockups { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .panel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px 18px; padding: 28px; border-radius: 16px; background: #fff; }
+  .panel--dark { background: #0b1f3f; }
+  .lk { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .lk img { width: 36px; height: 36px; border-radius: 9px; flex: none; }
+  .lk span { font-family: Barlow, sans-serif; font-weight: 700; font-size: 17px; color: var(--blue); white-space: nowrap; }
+  .lk small { display: block; font-size: 10px; font-weight: 600; color: var(--ink-3); line-height: 1; }
+  .panel--dark .lk span { color: #fff; }
+  .panel--dark .lk small { color: #9fb3d1; }
+  .panel--dark .lk img { box-shadow: 0 0 0 1px rgba(255,255,255,.18); }
+  .note { margin-top: 14px; font-size: 12.5px; color: var(--ink-3); }
+  @media (max-width: 1000px) { .grid { grid-template-columns: 1fr 1fr; } .rules { grid-template-columns: 1fr 1fr; } .lockups { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) { .grid, .rules { grid-template-columns: 1fr; } .card { grid-template-columns: 84px 1fr; gap: 16px; padding: 18px; } .card > img { width: 84px; height: 84px; border-radius: 21px; } .panel { grid-template-columns: 1fr 1fr; padding: 20px; } h1 { font-size: 24px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <img src="assets/img/logo-ifactis.png" alt="iFactiS" width="400" height="88">
+      <h1>製品ロゴ</h1>
+      <p class="lead">9製品をひとつのシリーズとして見せるためのロゴです。現場で使う道具やモノをそのまま描き、ひと目で用途が分かることを優先しました。</p>
+    </div>
+  </header>
+
+  <ul class="rules">
+    <li><b><span class="sw" style="background:#044197"></span>共通のタイル</b>メインカラー #044197 の角丸タイル。角丸は一辺の 1/4。</li>
+    <li><b><span class="sw" style="background:#1bdef3"></span>コーポレートロゴの波</b>iFactiS ロゴの波を下部に敷き、シリーズの目印にします。</li>
+    <li><b><span class="sw" style="background:#fff"></span>白い線画</b>線幅は一辺の 1/16。差し色はサブカラー #1bdef3 のみ。</li>
+    <li><b><span class="sw" style="background:#c20e12"></span>使わない色</b>ポイントカラーの赤は CTA 用に残し、ロゴには使いません。</li>
+  </ul>
+
+  <h2>Logos<span>各ロゴの意味</span></h2>
+  <div class="grid">
+    <div class="card"><img src="assets/img/products/logo/nexus.svg" alt=""><div><div class="name"><small>iFactiS</small>Nexus</div><div class="cat">生産管理</div><p>受注から納品までの工程を、ひと筆の流れでつなぎます。形は N。たどり着いた最後の工程をシアンで示します。</p><div class="sizes"><img src="assets/img/products/logo/nexus.svg" width="44" alt=""><img src="assets/img/products/logo/nexus.svg" width="28" alt=""><img src="assets/img/products/logo/nexus.svg" width="20" alt=""></div></div></div>
+    <div class="card"><img src="assets/img/products/logo/worktag.svg" alt=""><div><div class="name"><small>iFactiS</small>WorkTag</div><div class="cat">生産計画・作業指示</div><p>現場で使う作業指示タグ。計画が一枚のタグになって現場に届くイメージです。</p><div class="sizes"><img src="assets/img/products/logo/worktag.svg" width="44" alt=""><img src="assets/img/products/logo/worktag.svg" width="28" alt=""><img src="assets/img/products/logo/worktag.svg" width="20" alt=""></div></div></div>
+    <div class="card"><img src="assets/img/products/logo/talentline.svg" alt=""><div><div class="name"><small>iFactiS</small>TalentLine</div><div class="cat">人員配置</div><p>ラインに並ぶ作業者。シアンの一人は、いま配置した人を表します。</p><div class="sizes"><img src="assets/img/products/logo/talentline.svg" width="44" alt=""><img src="assets/img/products/logo/talentline.svg" width="28" alt=""><img src="assets/img/products/logo/talentline.svg" width="20" alt=""></div></div></div>
+    <div class="card"><img src="assets/img/products/logo/stockcore.svg" alt=""><div><div class="name"><small>iFactiS</small>StockCore</div><div class="cat">材料・在庫管理</div><p>積み上がった材料箱。いちばん上の箱（シアン）が、いま把握している在庫です。</p><div class="sizes"><img src="assets/img/products/logo/stockcore.svg" width="44" alt=""><img src="assets/img/products/logo/stockcore.svg" width="28" alt=""><img src="assets/img/products/logo/stockcore.svg" width="20" alt=""></div></div></div>
+    <div class="card"><img src="assets/img/products/logo/vision.svg" alt=""><div><div class="name"><small>iFactiS</small>Vision</div><div class="cat">カメラによる見守り</div><p>カメラのファインダーとレンズ。人の目の代わりに作業を見守ります。</p><div class="sizes"><img src="assets/img/products/logo/vision.svg" width="44" alt=""><img src="assets/img/products/logo/vision.svg" width="28" alt=""><img src="assets/img/products/logo/vision.svg" width="20" alt=""></div></div></div>
+    <div class="card"><img src="assets/img/products/logo/knowledge.svg" alt=""><div><div class="name"><small>iFactiS</small>Knowledge</div><div class="cat">ナレッジ検索</div><p>開いた手順書と、しおり。必要なページにすぐたどり着けることを表します。</p><div class="sizes"><img src="assets/img/products/logo/knowledge.svg" width="44" alt=""><img src="assets/img/products/logo/knowledge.svg" width="28" alt=""><img src="assets/img/products/logo/knowledge.svg" width="20" alt=""></div></div></div>
+    <div class="card"><img src="assets/img/products/logo/movex.svg" alt=""><div><div class="name"><small>iFactiS</small>MoveX</div><div class="cat">自動搬送</div><p>容器を載せて走る搬送車。シアンの箱が運ばれている容器です。</p><div class="sizes"><img src="assets/img/products/logo/movex.svg" width="44" alt=""><img src="assets/img/products/logo/movex.svg" width="28" alt=""><img src="assets/img/products/logo/movex.svg" width="20" alt=""></div></div></div>
+    <div class="card"><img src="assets/img/products/logo/labelpro.svg" alt=""><div><div class="name"><small>iFactiS</small>LabelPro</div><div class="cat">納入ラベル発行</div><p>バーコード付きの納入ラベル。印字して貼るだけ、の手軽さをそのまま形にしました。</p><div class="sizes"><img src="assets/img/products/logo/labelpro.svg" width="44" alt=""><img src="assets/img/products/logo/labelpro.svg" width="28" alt=""><img src="assets/img/products/logo/labelpro.svg" width="20" alt=""></div></div></div>
+    <div class="card"><img src="assets/img/products/logo/smartpackage.svg" alt=""><div><div class="name"><small>iFactiS</small>SmartPackage</div><div class="cat">パレット・通い箱管理</div><p>出荷して、戻ってくる通い箱。矢印がその行き来を表します。</p><div class="sizes"><img src="assets/img/products/logo/smartpackage.svg" width="44" alt=""><img src="assets/img/products/logo/smartpackage.svg" width="28" alt=""><img src="assets/img/products/logo/smartpackage.svg" width="20" alt=""></div></div></div>
+  </div>
+
+  <h2>Lockup<span>製品名との組み合わせ（白地・濃色地）</span></h2>
+  <div class="lockups">
+    <div class="panel" id="lk-light"></div>
+    <div class="panel panel--dark" id="lk-dark"></div>
+  </div>
+  <p class="note">最小サイズは 20px（印刷物は 6mm）。ロゴのまわりには一辺の 1/4 以上の余白をとってください。色の変更・変形・影の追加は行わないでください。データ：assets/img/products/logo/*.svg</p>
+</div>
+<script>
+  const P = [['nexus','Nexus'],['worktag','WorkTag'],['talentline','TalentLine'],['stockcore','StockCore'],['vision','Vision'],['knowledge','Knowledge'],['movex','MoveX'],['labelpro','LabelPro'],['smartpackage','SmartPackage']];
+  const html = P.map(([k, n]) => `<div class="lk"><img src="assets/img/products/logo/${k}.svg" alt=""><span><small>iFactiS</small>${n}</span></div>`).join('');
+  document.getElementById('lk-light').innerHTML = html;
+  document.getElementById('lk-dark').innerHTML = html;
+</script>
+</body>
+</html>

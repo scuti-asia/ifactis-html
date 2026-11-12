@@ -1,0 +1,12 @@
+デモ用の仮写真です。本番では一井グループ工場で撮影した写真に差し替えてください。
+Temporary demo photos (replace with real photos of the Ichii Group factories before launch).
+
+hero.jpg — "Welding worker operates equipment in a factory setting.jpg" by Shixart1985 / Wikimedia Commons, CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Welding_worker_operates_equipment_in_a_factory_setting.jpg
+hero-wide-1200/2400.(jpg|webp) — 上記 hero.jpg と同じ写真の横長オリジナル（ファーストビュー背景用に縮小）/ same photo as hero.jpg, uncropped landscape original resized for the first view
+origin.jpg — "Worker operates machinery in a factory setting.jpg" by Shixart1985 / Wikimedia Commons, CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Worker_operates_machinery_in_a_factory_setting.jpg
+case-ichii.jpg — "Worker interacts with machine control panel in a manufacturing facility.jpg" by Shixart1985 / Wikimedia Commons, CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Worker_interacts_with_machine_control_panel_in_a_manufacturing_facility.jpg
+case-a.jpg — "Worker uses machinery to assemble parts in a factory setting.jpg" by Shixart1985 / Wikimedia Commons, CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Worker_uses_machinery_to_assemble_parts_in_a_factory_setting.jpg
+case-b.jpg — "Worker operates a machine in a factory setting during daylight hours.jpg" by Shixart1985 / Wikimedia Commons, CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Worker_operates_a_machine_in_a_factory_setting_during_daylight_hours.jpg
+case-c.jpg — "Workers operating machinery in a factory setting.jpg" by Shixart1985 / Wikimedia Commons, CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Workers_operating_machinery_in_a_factory_setting.jpg
+
+License: https://creativecommons.org/licenses/by/2.0/

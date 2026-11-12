@@ -1,0 +1,967 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iFactiS（アイファクティス）｜現場の職人知を、誰でも使える仕組みに。</title>
+<meta name="description" content="iFactiSは、自動車部品メーカーの一井グループが自社の工場で困り、試し、磨いてきた製造業向けソリューションです。ベテランの手順・判断基準・異常対応を、新人や外国人作業者でも迷わず使える形に変えます。">
+<meta name="theme-color" content="#044197">
+
+<!-- 多言語対応：JA / EN（ID・VI は準備中）。URL は確定後に差し替え -->
+<link rel="alternate" hreflang="ja" href="https://example.com/">
+<link rel="alternate" hreflang="en" href="https://example.com/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://example.com/">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="iFactiS｜現場の職人知を、誰でも使える仕組みに。">
+<meta property="og:description" content="製造業がつくった、製造業のためのソリューション。">
+<meta property="og:image" content="assets/img/ogp.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>
+  /* 言語の初期判定（?lang=en または前回の選択）。英語表示の場合は切替完了まで一瞬だけ非表示にしてチラつきを防ぐ */
+  (function () {
+    var d = document.documentElement, l = null;
+    d.classList.add('js');
+    try { l = new URLSearchParams(location.search).get('lang') || localStorage.getItem('ifactis-lang'); } catch (e) {}
+    if (l === 'en') {
+      d.lang = 'en';
+      d.classList.add('i18n-loading');
+      setTimeout(function () { d.classList.remove('i18n-loading'); }, 3000);
+    }
+  })();
+</script>
+
+<!-- ============================================================
+     計測タグ（本番公開時に ID を設定して有効化）
+     ・GA4         : ボタン／リンククリックは data-track 属性 → dataLayer 'cta_click' で送信
+     ・HubSpot     : フォーム・トラッキングコード
+     ・ヒートマップ : Microsoft Clarity 等
+     ============================================================
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+<script id="hs-script-loader" async defer src="//js.hs-scripts.com/XXXXXXXX.js"></script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","XXXXXXXXXX");</script>
+-->
+</head>
+<body>
+
+<!-- ============ Icon sprite（線画・単色・角丸で統一） ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></symbol>
+    <symbol id="i-helmet" viewBox="0 0 24 24"><path d="M3.5 17.5h17M5.5 17.5v-1a6.5 6.5 0 0 1 13 0v1M9.5 11.5V7a2.5 2.5 0 0 1 5 0v4.5"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-lang" viewBox="0 0 24 24"><path d="M4 5h9M8.5 3v2M6 5c.6 3.2 2.8 6 6 7.5M11 5c-.8 3.6-3.3 6.6-7 8M13 21l4-9 4 9M14.5 17.5h5"/></symbol>
+    <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-.5-.5-2.5z"/></symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h6M9 18h3"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.5l9.5 16.5h-19z"/><path d="M12 10v4M12 17.2v.3"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h11M9 8h6"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-board" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11M12.5 13h5M12.5 16.5h3"/></symbol>
+    <symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M8 12.5l2.5 2.5L16 9.5"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M15.5 4.8a3.5 3.5 0 0 1 0 6.4M17.5 14.3c2.4.6 4 2.6 4 5.7"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 0 1 4.9.7c0 1.7-2.4 2.1-2.4 3.8M12 17.2v.3"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2z"/></symbol>
+    <symbol id="i-loop" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.6M4 4v4h4"/></symbol>
+    <symbol id="i-factory" viewBox="0 0 24 24"><path d="M3 20.5V10.5l5 3.2v-3.2l5 3.2v-3.2l5 3.2V4h3v16.5z"/><path d="M2 20.5h20M7 17.2h1.5M11.2 17.2h1.5M15.4 17.2h1.5"/></symbol>
+    <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M12 20v-8M12 12c0-3.5-2.5-6-7-6 0 3.5 2.5 6 7 6zM12 14c0-3 2.2-5.5 6.5-5.5 0 3-2.2 5.5-6.5 5.5z"/></symbol>
+    <symbol id="lg-hex" viewBox="0 0 32 32"><path d="M16 2l12 7v14l-12 7-12-7V9z"/></symbol>
+    <symbol id="lg-ring" viewBox="0 0 32 32"><path fill-rule="evenodd" d="M16 3a13 13 0 1 0 0 26 13 13 0 0 0 0-26zm0 7a6 6 0 1 1 0 12 6 6 0 0 1 0-12z"/></symbol>
+    <symbol id="lg-bars" viewBox="0 0 32 32"><path d="M4 19h6v10H4zM13 11h6v18h-6zM22 3h6v26h-6z"/></symbol>
+    <symbol id="lg-diamond" viewBox="0 0 32 32"><path fill-rule="evenodd" d="M16 2l14 14-14 14L2 16zm0 8l-6 6 6 6 6-6z"/></symbol>
+    <symbol id="lg-plus" viewBox="0 0 32 32"><path d="M12 3h8v9h9v8h-9v9h-8v-9H3v-8h9z"/></symbol>
+    <symbol id="lg-tri" viewBox="0 0 32 32"><path d="M16 3l14 25H2z"/></symbol>
+    <!-- 製品ロゴ（共通の角丸タイル＋コーポレートロゴの波。単体ファイルは assets/img/products/logo/*.svg） -->
+    <symbol id="pl-nexus" viewBox="0 0 48 48"><g stroke="none"><rect width="48" height="48" rx="12" fill="#044197"/><path d="M0.082 37.4C9 34.2 19 34.6 28.5 37.4S43 40 47.993 36.4A12 12 0 0 1 36 48H12A12 12 0 0 1 0.082 37.4Z" fill="#1bdef3" opacity=".42"/><path d="M0.686 40C10 36.8 19.5 37.4 29 40S43.5 42.2 47.619 39A12 12 0 0 1 36 48H12A12 12 0 0 1 0.686 40Z" fill="#1bdef3"/><path d="M12.75 27.5V11.5L35.25 27.5V11.5" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><g fill="#fff"><rect x="9" y="24.5" width="7.5" height="7.5" rx="2"/><rect x="9" y="7.5" width="7.5" height="7.5" rx="2"/><rect x="31.5" y="24.5" width="7.5" height="7.5" rx="2"/></g><rect x="31.5" y="7.5" width="7.5" height="7.5" rx="2" fill="#1bdef3"/></g></symbol>
+    <symbol id="pl-worktag" viewBox="0 0 48 48"><g stroke="none"><rect width="48" height="48" rx="12" fill="#044197"/><path d="M0.082 37.4C9 34.2 19 34.6 28.5 37.4S43 40 47.993 36.4A12 12 0 0 1 36 48H12A12 12 0 0 1 0.082 37.4Z" fill="#1bdef3" opacity=".42"/><path d="M0.686 40C10 36.8 19.5 37.4 29 40S43.5 42.2 47.619 39A12 12 0 0 1 36 48H12A12 12 0 0 1 0.686 40Z" fill="#1bdef3"/><path d="M10.5 11.5H28L37.5 19.75 28 28H10.5Z" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M15.5 17H22.5M15.5 22.5H20" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="29" cy="19.75" r="2.7" fill="#1bdef3"/></g></symbol>
+    <symbol id="pl-talentline" viewBox="0 0 48 48"><g stroke="none"><rect width="48" height="48" rx="12" fill="#044197"/><path d="M0.082 37.4C9 34.2 19 34.6 28.5 37.4S43 40 47.993 36.4A12 12 0 0 1 36 48H12A12 12 0 0 1 0.082 37.4Z" fill="#1bdef3" opacity=".42"/><path d="M0.686 40C10 36.8 19.5 37.4 29 40S43.5 42.2 47.619 39A12 12 0 0 1 36 48H12A12 12 0 0 1 0.686 40Z" fill="#1bdef3"/><g fill="#fff"><circle cx="13" cy="13.2" r="3.1"/><path d="M9 27V21a4 4 0 0 1 8 0v6Z"/><circle cx="35" cy="13.2" r="3.1"/><path d="M31 27V21a4 4 0 0 1 8 0v6Z"/></g><g fill="#1bdef3"><circle cx="24" cy="11.6" r="3.4"/><path d="M19.4 27V19.8a4.6 4.6 0 0 1 9.2 0V27Z"/></g><path d="M8.5 31H39.5" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></symbol>
+    <symbol id="pl-stockcore" viewBox="0 0 48 48"><g stroke="none"><rect width="48" height="48" rx="12" fill="#044197"/><path d="M0.082 37.4C9 34.2 19 34.6 28.5 37.4S43 40 47.993 36.4A12 12 0 0 1 36 48H12A12 12 0 0 1 0.082 37.4Z" fill="#1bdef3" opacity=".42"/><path d="M0.686 40C10 36.8 19.5 37.4 29 40S43.5 42.2 47.619 39A12 12 0 0 1 36 48H12A12 12 0 0 1 0.686 40Z" fill="#1bdef3"/><rect x="10.5" y="20.5" width="11.5" height="10" rx="1.6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><rect x="26" y="20.5" width="11.5" height="10" rx="1.6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><rect x="17.75" y="6.5" width="12.5" height="10.5" rx="1.8" fill="#1bdef3"/></g></symbol>
+    <symbol id="pl-vision" viewBox="0 0 48 48"><g stroke="none"><rect width="48" height="48" rx="12" fill="#044197"/><path d="M0.082 37.4C9 34.2 19 34.6 28.5 37.4S43 40 47.993 36.4A12 12 0 0 1 36 48H12A12 12 0 0 1 0.082 37.4Z" fill="#1bdef3" opacity=".42"/><path d="M0.686 40C10 36.8 19.5 37.4 29 40S43.5 42.2 47.619 39A12 12 0 0 1 36 48H12A12 12 0 0 1 0.686 40Z" fill="#1bdef3"/><path d="M10 15.5V9.5H16M32 9.5H38V15.5M38 23.5V29.5H32M16 29.5H10V23.5" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="24" cy="19.5" r="6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="24" cy="19.5" r="2.5" fill="#1bdef3"/></g></symbol>
+    <symbol id="pl-knowledge" viewBox="0 0 48 48"><g stroke="none"><rect width="48" height="48" rx="12" fill="#044197"/><path d="M0.082 37.4C9 34.2 19 34.6 28.5 37.4S43 40 47.993 36.4A12 12 0 0 1 36 48H12A12 12 0 0 1 0.082 37.4Z" fill="#1bdef3" opacity=".42"/><path d="M0.686 40C10 36.8 19.5 37.4 29 40S43.5 42.2 47.619 39A12 12 0 0 1 36 48H12A12 12 0 0 1 0.686 40Z" fill="#1bdef3"/><path d="M24 13.4C20.4 10.9 15.4 10.2 10 10.9V28.3C15.4 27.6 20.4 28.3 24 30.8 27.6 28.3 32.6 27.6 38 28.3V10.9C32.6 10.2 27.6 10.9 24 13.4ZM24 13.4V30.8" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M29.2 9.6H35V20.5L32.1 18.2 29.2 20.5Z" fill="#1bdef3"/></g></symbol>
+    <symbol id="pl-movex" viewBox="0 0 48 48"><g stroke="none"><rect width="48" height="48" rx="12" fill="#044197"/><path d="M0.082 37.4C9 34.2 19 34.6 28.5 37.4S43 40 47.993 36.4A12 12 0 0 1 36 48H12A12 12 0 0 1 0.082 37.4Z" fill="#1bdef3" opacity=".42"/><path d="M0.686 40C10 36.8 19.5 37.4 29 40S43.5 42.2 47.619 39A12 12 0 0 1 36 48H12A12 12 0 0 1 0.686 40Z" fill="#1bdef3"/><rect x="19.5" y="8" width="14.5" height="10.5" rx="1.8" fill="#1bdef3"/><rect x="14" y="20" width="25" height="5.5" rx="2.75" fill="#fff"/><g fill="#fff"><circle cx="19.5" cy="29.4" r="2.6"/><circle cx="33.5" cy="29.4" r="2.6"/></g><path d="M8 12H13.5M6.5 17.5H12M9 23H11" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></symbol>
+    <symbol id="pl-labelpro" viewBox="0 0 48 48"><g stroke="none"><rect width="48" height="48" rx="12" fill="#044197"/><path d="M0.082 37.4C9 34.2 19 34.6 28.5 37.4S43 40 47.993 36.4A12 12 0 0 1 36 48H12A12 12 0 0 1 0.082 37.4Z" fill="#1bdef3" opacity=".42"/><path d="M0.686 40C10 36.8 19.5 37.4 29 40S43.5 42.2 47.619 39A12 12 0 0 1 36 48H12A12 12 0 0 1 0.686 40Z" fill="#1bdef3"/><rect x="10" y="9" width="28" height="21.5" rx="2.6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><rect x="14.5" y="13.2" width="12" height="3" rx="1.5" fill="#1bdef3"/><g fill="#fff"><rect x="14.5" y="19.5" width="2.6" height="7"/><rect x="18.7" y="19.5" width="1.6" height="7"/><rect x="21.9" y="19.5" width="2.8" height="7"/><rect x="26.3" y="19.5" width="1.6" height="7"/><rect x="29.5" y="19.5" width="1.6" height="7"/><rect x="32.4" y="19.5" width="1.6" height="7"/></g></g></symbol>
+    <symbol id="pl-smartpackage" viewBox="0 0 48 48"><g stroke="none"><rect width="48" height="48" rx="12" fill="#044197"/><path d="M0.082 37.4C9 34.2 19 34.6 28.5 37.4S43 40 47.993 36.4A12 12 0 0 1 36 48H12A12 12 0 0 1 0.082 37.4Z" fill="#1bdef3" opacity=".42"/><path d="M0.686 40C10 36.8 19.5 37.4 29 40S43.5 42.2 47.619 39A12 12 0 0 1 36 48H12A12 12 0 0 1 0.686 40Z" fill="#1bdef3"/><path d="M11.5 16.5H36.5L34.5 30.5H13.5Z" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M20.5 21.5H27.5" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M14.5 11.5C18 6 30 6 33.5 11.5" stroke="#1bdef3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M34.3 7.2 33.6 11.6 29.3 10.7" stroke="#1bdef3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></symbol>
+  </defs>
+</svg>
+
+<!-- ======================================================================
+     Header
+     ====================================================================== -->
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a class="logo" href="#top" aria-label="iFactiS トップへ" data-i18n-attr="aria-label:a11y.home">
+      <img class="logo-img" src="assets/img/logo-ifactis.png" alt="" width="400" height="88">
+    </a>
+
+    <nav class="gnav" id="gnav" aria-label="グローバルナビゲーション" data-i18n-attr="aria-label:a11y.gnav">
+      <ul>
+        <li><a href="#about" data-i18n="nav.about">iFactiSとは</a></li>
+        <li><a href="#products" data-i18n="nav.products">製品・サービス</a></li>
+        <li><a href="#cases" data-i18n="nav.cases">導入事例</a></li>
+        <li><a href="#news" data-i18n="nav.news">ニュース</a></li>
+        <li><a href="#events" data-i18n="nav.events">イベント</a></li>
+        <li><a href="#contact" data-track="nav_partner" data-i18n="nav.partners">パートナー募集</a></li>
+        <li class="gnav-cta"><a class="btn btn-red" href="#contact" data-track="nav_contact_sp"><span data-i18n="cta.contact">お問い合わせ</span><svg class="icon icon-arrow"><use href="#i-arrow"/></svg></a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang">
+        <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="言語を選択" data-i18n-attr="aria-label:a11y.lang">
+          <svg class="icon icon-s"><use href="#i-globe"/></svg><span class="lang-label">JA</span><svg class="icon icon-s chev"><use href="#i-chev"/></svg>
+        </button>
+        <div class="lang-menu" role="menu">
+          <a href="?lang=ja" role="menuitem" data-set-lang="ja" aria-current="true" lang="ja">日本語<span>JA</span></a>
+          <a href="?lang=en" role="menuitem" data-set-lang="en" lang="en">English<span>EN</span></a>
+          <span class="is-disabled" role="menuitem" aria-disabled="true" lang="id">Bahasa Indonesia<span class="soon" data-i18n="lang.soon">準備中</span></span>
+          <span class="is-disabled" role="menuitem" aria-disabled="true" lang="vi">Tiếng Việt<span class="soon" data-i18n="lang.soon">準備中</span></span>
+        </div>
+      </div>
+      <a class="btn btn-red btn-sm" href="#contact" data-track="header_contact" data-i18n="cta.contact">お問い合わせ</a>
+      <button class="menu-toggle" type="button" aria-controls="gnav" aria-expanded="false" aria-label="メニューを開く">
+        <svg class="icon"><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ======================================================================
+     First view（現場の写真を全面に。本番は一井グループ工場で撮影した写真・動画に差し替え）
+     ====================================================================== -->
+<section class="fv" aria-labelledby="hero-title">
+  <div class="fv-media" aria-hidden="true">
+    <picture>
+      <source type="image/webp" srcset="assets/img/hero-wide-1200.webp 1200w, assets/img/hero-wide-2400.webp 2400w" sizes="100vw">
+      <img src="assets/img/hero-wide-2400.jpg" srcset="assets/img/hero-wide-1200.jpg 1200w, assets/img/hero-wide-2400.jpg 2400w" sizes="100vw" alt="" width="2400" height="1597" fetchpriority="high" decoding="async">
+    </picture>
+    <!-- 動画に差し替える場合（10〜15秒・無音のループ。poster は上の写真）
+    <video autoplay muted loop playsinline poster="assets/img/hero-wide-2400.jpg"><source src="assets/video/hero.mp4" type="video/mp4"></video>
+    -->
+  </div>
+  <span class="fv-cap" data-i18n="ph.caption">イメージ写真</span>
+
+  <div class="container fv-inner">
+    <div class="fv-copy">
+      <p class="fv-badge"><span class="dot-red"></span><span data-i18n="hero.badge">製造業がつくった、製造業のためのソリューション</span></p>
+      <h1 class="fv-title" id="hero-title" data-i18n="hero.title"><span class="line">現場の<span class="mark">職人知</span>を、</span><span class="line">誰でも使える</span><span class="line accent">仕組みに。</span></h1>
+
+      <!-- 「これまで」→「iFactiS で」を順番に切り替えて見せる（main.js） -->
+      <ul class="fv-swap" aria-label="iFactiSで変わること" data-i18n-attr="aria-label:a11y.swap">
+        <li><s data-i18n="swap.1a">勘</s><span class="fv-arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span><b data-i18n="swap.1b">判断基準</b></li>
+        <li><s data-i18n="swap.2a">コツ</s><span class="fv-arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span><b data-i18n="swap.2b">作業手順</b></li>
+        <li><s data-i18n="swap.3a">「あの人に聞いて」</s><span class="fv-arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span><b data-i18n="swap.3b">画面を見れば分かる</b></li>
+        <li><s data-i18n="swap.4a">口頭の指示</s><span class="fv-arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span><b data-i18n="swap.4b">母国語の手順書</b></li>
+      </ul>
+
+      <p class="fv-lead" data-i18n="hero.lead2">自動車部品メーカーの<strong>一井グループ</strong>が、自分たちの工場で困り、試し、磨いてきた製造業向けソリューションです。</p>
+      <div class="fv-cta">
+        <a class="btn btn-red" href="#contact" data-track="hero_contact"><span data-i18n="cta.consult">業務改善を相談する</span><svg class="icon icon-arrow"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#products" data-track="hero_products" data-i18n="hero.products">製品・サービスを見る</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 実績（機械の銘板のように） -->
+  <div class="fv-spec">
+    <ul class="container fv-spec-inner" data-stagger>
+      <li class="fv-stat">
+        <span class="fv-stat-icon" aria-hidden="true"><svg class="icon"><use href="#i-globe"/></svg></span>
+        <span class="fv-stat-label" data-i18n="facts.countries">稼働している国</span>
+        <span class="fv-stat-value"><b>3</b><span class="fv-stat-unit" data-i18n="facts.countriesUnit">ヵ国</span><span class="fv-chips"><i>JP</i><i>ID</i><i>VN</i></span></span>
+      </li>
+      <li class="fv-stat">
+        <span class="fv-stat-icon" aria-hidden="true"><svg class="icon"><use href="#i-lang"/></svg></span>
+        <span class="fv-stat-label" data-i18n="facts.langs">現場画面の対応言語</span>
+        <span class="fv-stat-value"><b>4</b><span class="fv-stat-unit" data-i18n="facts.langsUnit">言語</span><span class="fv-chips"><i>JA</i><i>EN</i><i>ID</i><i>VI</i></span></span>
+      </li>
+      <li class="fv-stat">
+        <span class="fv-stat-icon" aria-hidden="true"><svg class="icon"><use href="#i-factory"/></svg></span>
+        <span class="fv-stat-label" data-i18n="fv.inhouseNote">量産ラインで実証</span>
+        <span class="fv-stat-value"><b class="fv-stat-jp" data-i18n="fv.inhouse">自社工場</b></span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Next event -->
+<div class="next-event">
+  <div class="container">
+    <a class="ticket" href="#events" data-track="hero_event">
+      <span class="ticket-label">NEXT EVENT</span>
+      <span class="ticket-date"><b>2026.12.10</b><span data-i18n="ticket.time">THU 14:00–15:00</span></span>
+      <span class="ticket-title"><span class="badge badge-red" data-i18n="badge.open">受付中</span><span data-i18n="ticket.title">現場から始める生産管理セミナー</span><small data-i18n="ticket.meta">オンライン開催・参加無料｜工場長・生産管理ご担当者向け</small></span>
+      <span class="ticket-cta"><span data-i18n="ticket.cta">詳細・お申し込み</span><svg class="icon icon-s"><use href="#i-arrow"/></svg></span>
+      <!-- マスコット：セミナーへようこそ -->
+      <span class="mascot mascot--hello" aria-hidden="true"><picture><source srcset="assets/img/mascot/mascot-wave.webp" type="image/webp"><img src="assets/img/mascot/mascot-wave.png" alt="" width="411" height="440" loading="lazy" decoding="async"></picture></span>
+    </a>
+  </div>
+</div>
+
+<!-- ======================================================================
+     Voices（現場の声）
+     ====================================================================== -->
+<section class="sec sec-soft grid-paper voices" aria-labelledby="voices-title">
+  <div class="container">
+    <div class="sec-head-center reveal">
+      <p class="eyebrow">Voices<span class="jp">現場の声</span></p>
+      <h2 class="sec-title" id="voices-title" data-i18n="voices.title">こんな声、<br class="br-sp">あなたの工場でも<br class="br-sp">聞きませんか。</h2>
+      <p class="sec-lead" data-i18n="voices.lead">iFactiSは、製造業の現場で実際に交わされている言葉から生まれました。</p>
+      <!-- マスコット：考える -->
+      <div class="mascot mascot--think" aria-hidden="true" data-anim>
+        <picture><source srcset="assets/img/mascot/mascot-think.webp" type="image/webp"><img src="assets/img/mascot/mascot-think.png" alt="" width="273" height="440" loading="lazy" decoding="async"></picture>
+        <p class="mascot-bubble tail-b" data-i18n="mascot.think">うちの工場にも、<br>ありそう…？</p>
+      </div>
+    </div>
+
+    <ul class="voice-grid">
+      <li class="voice reveal">
+        <div class="voice-bubble">
+          <div class="voice-head"><span class="voice-tag" data-i18n="voice.1.tag">属人化</span><span class="voice-no">VOICE 01</span></div>
+          <p class="voice-text" data-i18n="voice.1">あの人が休むと、<span class="mark">止まってしまう工程</span>がある。</p>
+        </div>
+        <p class="voice-who"><span class="avatar"><svg class="icon"><use href="#i-user"/></svg></span><span data-i18n="voice.1.who">工場長</span></p>
+      </li>
+      <li class="voice reveal">
+        <div class="voice-bubble">
+          <div class="voice-head"><span class="voice-tag" data-i18n="voice.2.tag">教育の負担</span><span class="voice-no">VOICE 02</span></div>
+          <p class="voice-text" data-i18n="voice.2">同じことを、<span class="mark">何度も、何人にも</span>教えている。</p>
+        </div>
+        <p class="voice-who"><span class="avatar"><svg class="icon"><use href="#i-helmet"/></svg></span><span data-i18n="voice.2.who">現場監督者</span></p>
+      </li>
+      <li class="voice reveal">
+        <div class="voice-bubble">
+          <div class="voice-head"><span class="voice-tag" data-i18n="voice.3.tag">情報の分散</span><span class="voice-no">VOICE 03</span></div>
+          <p class="voice-text" data-i18n="voice.3">情報が、紙とExcelと口頭に<span class="mark">バラバラ</span>にある。</p>
+        </div>
+        <p class="voice-who"><span class="avatar"><svg class="icon"><use href="#i-user"/></svg></span><span data-i18n="voice.3.who">生産管理</span></p>
+      </li>
+      <li class="voice reveal">
+        <div class="voice-bubble">
+          <div class="voice-head"><span class="voice-tag" data-i18n="voice.4.tag">人のせいになる</span><span class="voice-no">VOICE 04</span></div>
+          <p class="voice-text" data-i18n="voice.4">不具合が出ると、結局<span class="mark">“人のミス”</span>で片付けてしまう。</p>
+        </div>
+        <p class="voice-who"><span class="avatar"><svg class="icon"><use href="#i-helmet"/></svg></span><span data-i18n="voice.4.who">品質保証</span></p>
+      </li>
+      <li class="voice reveal">
+        <div class="voice-bubble">
+          <div class="voice-head"><span class="voice-tag" data-i18n="voice.5.tag">技能伝承</span><span class="voice-no">VOICE 05</span></div>
+          <p class="voice-text" data-i18n="voice.5">ベテランの技を、<span class="mark">辞めてしまう前に</span>会社に残したい。</p>
+        </div>
+        <p class="voice-who"><span class="avatar"><svg class="icon"><use href="#i-user"/></svg></span><span data-i18n="voice.5.who">経営者</span></p>
+      </li>
+      <li class="voice reveal">
+        <div class="voice-bubble">
+          <div class="voice-head"><span class="voice-tag" data-i18n="voice.6.tag">管理の負担</span><span class="voice-no">VOICE 06</span></div>
+          <p class="voice-text" data-i18n="voice.6">システムを入れたら、<span class="mark">入力作業が増えた</span>だけだった。</p>
+        </div>
+        <p class="voice-who"><span class="avatar"><svg class="icon"><use href="#i-helmet"/></svg></span><span data-i18n="voice.6.who">現場リーダー</span></p>
+      </li>
+    </ul>
+
+    <!-- 6つの声 → 共通の原因（仕組み） -->
+    <div class="voices-answer" data-anim>
+      <div class="va-cause">
+        <p class="va-label" data-i18n="voices.common">6つの声に共通しているのは──</p>
+        <ul class="va-chips" data-stagger>
+          <li data-i18n="voice.1.tag">属人化</li>
+          <li data-i18n="voice.2.tag">教育の負担</li>
+          <li data-i18n="voice.3.tag">情報の分散</li>
+          <li data-i18n="voice.4.tag">人のせいになる</li>
+          <li data-i18n="voice.5.tag">技能伝承</li>
+          <li data-i18n="voice.6.tag">管理の負担</li>
+        </ul>
+      </div>
+      <div class="va-arrow" aria-hidden="true"><i class="flow-track"></i><span><svg class="icon"><use href="#i-arrow"/></svg></span></div>
+      <div class="va-statement">
+        <p class="va-main" data-i18n="voices.answer">問題は「人」ではなく、<br><span class="mark">「仕組み」</span>にあります。</p>
+        <p class="va-sub" data-i18n="voices.answerSub">iFactiSは、人を責めずに済む現場を、仕組みでつくります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     Approach（iFactiSの考え方）
+     ====================================================================== -->
+<section class="sec" id="about" aria-labelledby="about-title">
+  <div class="container">
+    <div class="sec-head-row reveal">
+      <div>
+        <p class="eyebrow">Our Approach<span class="jp">iFactiSの考え方</span></p>
+        <h2 class="sec-title" id="about-title" data-i18n="about.title">職人の「勘どころ」を、<br>みんなの「判断基準」へ。</h2>
+      </div>
+      <p class="sec-lead" data-i18n="about.lead">iFactiSは、ベテランの経験や勘を否定しません。「どこを見て、何を基準に判断しているのか」を丁寧に聞き出し、手順・判断基準・異常処置として、誰でも使える形に整えます。</p>
+    </div>
+
+    <div class="flow" data-anim>
+      <div class="flow-card flow-before">
+        <span class="flow-label">BEFORE</span>
+        <h3 data-i18n="flow.before">人に閉じた知恵</h3>
+        <div class="tacit-cloud" aria-label="暗黙知の例" data-i18n-attr="aria-label:a11y.cloud" data-stagger>
+          <span data-i18n="flow.chip1">勘</span><span data-i18n="flow.chip2">コツ</span><span data-i18n="flow.chip3">長年の経験</span><span data-i18n="flow.chip4">暗黙のルール</span><span data-i18n="flow.chip5">口頭の指示</span><span data-i18n="flow.chip6">「あの人に聞いて」</span>
+        </div>
+        <ul class="x-list">
+          <li><svg class="icon"><use href="#i-x"/></svg><span data-i18n="flow.x1">聞かないと分からない</span></li>
+          <li><svg class="icon"><use href="#i-x"/></svg><span data-i18n="flow.x2">人によってやり方が違う</span></li>
+          <li><svg class="icon"><use href="#i-x"/></svg><span data-i18n="flow.x3">休むと工程が止まる</span></li>
+        </ul>
+      </div>
+
+      <div class="flow-arrow" aria-hidden="true"><i class="flow-track"></i><span><svg class="icon"><use href="#i-arrow"/></svg></span></div>
+
+      <div class="flow-card flow-core">
+        <span class="flow-label">iFactiS</span>
+        <h3 data-i18n="flow.core">現場の知恵を、仕組みに変える</h3>
+        <ul class="core-list" data-stagger>
+          <li><span class="ci"><svg class="icon"><use href="#i-clipboard"/></svg></span><span><b data-i18n="flow.c1">作業手順</b><small data-i18n="flow.c1s">写真・動画で、順番どおりに</small></span></li>
+          <li><span class="ci"><svg class="icon"><use href="#i-eye"/></svg></span><span><b data-i18n="flow.c2">判断基準</b><small data-i18n="flow.c2s">OK・NGの見本を、誰でも同じ目で</small></span></li>
+          <li><span class="ci"><svg class="icon"><use href="#i-alert"/></svg></span><span><b data-i18n="flow.c3">異常処置</b><small data-i18n="flow.c3s">「止める・呼ぶ・待つ」を迷わず</small></span></li>
+          <li><span class="ci"><svg class="icon"><use href="#i-book"/></svg></span><span><b data-i18n="flow.c4">記録・教育</b><small data-i18n="flow.c4s">履歴が残り、教え方がそろう</small></span></li>
+        </ul>
+      </div>
+
+      <div class="flow-arrow" aria-hidden="true"><i class="flow-track"></i><span><svg class="icon"><use href="#i-arrow"/></svg></span></div>
+
+      <div class="flow-card flow-after">
+        <span class="flow-label">AFTER</span>
+        <h3 data-i18n="flow.after">誰でも、同じ品質で</h3>
+        <ul class="people" data-stagger>
+          <li><svg class="icon"><use href="#i-sprout"/></svg><span data-i18n="flow.p1">新人</span></li>
+          <li><svg class="icon"><use href="#i-user"/></svg><span data-i18n="flow.p2">若手</span></li>
+          <li><svg class="icon"><use href="#i-lang"/></svg><span data-i18n="flow.p3">外国人<br>作業者</span></li>
+        </ul>
+        <ul class="ok-list" data-stagger>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="flow.ok1">迷わない</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="flow.ok2">聞かなくていい</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="flow.ok3">同じ品質で動ける</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3つのキーワード：現場 / 職人 / 簡単 -->
+    <div class="keywords">
+      <article class="kw reveal">
+        <p class="kw-no">01</p>
+        <p class="kw-word">現場<small data-i18n="kw.1.suffix">から</small></p>
+        <h3 data-i18n="kw.1.title">机上ではなく、<br>現場の困りごとから。</h3>
+        <p class="kw-text" data-i18n="kw.1.text">工程、帳票、Excel、口頭での確認まで。実際に現場を歩いて確かめます。「AIで何ができるか」からは始めません。</p>
+        <p class="kw-quote"><small data-i18n="kw.1.qlabel">最初の打ち合わせで、私たちが聞くこと</small><span data-i18n="kw.1.q">「今いちばん、人に頼っている仕事はどれですか？」</span></p>
+      </article>
+      <article class="kw reveal">
+        <p class="kw-no">02</p>
+        <p class="kw-word">職人<small data-i18n="kw.2.suffix">と</small></p>
+        <h3 data-i18n="kw.2.title">ベテランの知恵を、<br>会社の財産に。</h3>
+        <p class="kw-text" data-i18n="kw.2.text">職人の勘を「古い」とは言いません。その判断を言葉と写真にして残し、若手・新人・外国人作業者へとつないでいきます。</p>
+        <p class="kw-quote"><small data-i18n="kw.2.qlabel">ベテランの方に、私たちが聞くこと</small><span data-i18n="kw.2.q">「その判断は、どこを見て、何を基準にしていますか？」</span></p>
+      </article>
+      <article class="kw reveal">
+        <p class="kw-no">03</p>
+        <p class="kw-word">簡単<small data-i18n="kw.3.suffix">に</small></p>
+        <h3 data-i18n="kw.3.title">誰でも、<br>初日から迷わない。</h3>
+        <p class="kw-text" data-i18n="kw.3.text">多機能は誇りません。大きなボタン、写真の見本、母国語の表示。入力や確認の手間を増やさず、今の作業の流れに自然に入り込みます。</p>
+        <p class="kw-quote"><small data-i18n="kw.3.qlabel">導入前に、必ず確かめること</small><span data-i18n="kw.3.q">「現場の入力や確認が、増えていませんか？」</span></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     Origin（製造業から生まれた）
+     ====================================================================== -->
+<section class="sec origin" aria-labelledby="origin-title">
+  <div class="container">
+    <div class="origin-grid">
+      <div class="origin-text reveal">
+        <p class="eyebrow">Born in the Factory<span class="jp">製造業から生まれた理由</span></p>
+        <h2 class="sec-title" id="origin-title" data-i18n="origin.title">私たちはIT企業ではなく、<br>毎日ものをつくる<br class="br-sp"><span class="u">製造業</span>です。</h2>
+        <p data-i18n="origin.p1">iFactiSを生んだのは、自動車部品の量産を手がける<strong>一井グループ</strong>。プレス板金、溶接、金型・治具の製作から量産立ち上げまで、品質と納期に向き合い続けてきた現場です。</p>
+        <p data-i18n="origin.p2">人手不足も、技能伝承も、外国人作業者の教育も、すべて自分たちの課題でした。だからiFactiSは、<strong>自分たちの工場で困り、試し、磨いてから</strong>お届けしています。</p>
+        <ul class="skills" aria-label="一井グループの現場ノウハウ" data-i18n-attr="aria-label:a11y.skills">
+          <li data-i18n="skill.1">自動車部品の量産</li><li data-i18n="skill.2">プレス板金</li><li data-i18n="skill.3">溶接</li><li data-i18n="skill.4">金型・治具製作</li><li data-i18n="skill.5">試作〜量産立ち上げ</li><li data-i18n="skill.6">TPS・改善活動</li>
+        </ul>
+      </div>
+      <figure class="ph origin-photo reveal">
+        <div class="ph-empty"><svg class="icon"><use href="#i-camera"/></svg>一井グループ 量産ラインの写真<br>（撮影予定）</div>
+        <img src="assets/img/origin.jpg" alt="量産工場で機械を操作する作業者" data-i18n-attr="alt:alt.origin" onerror="this.remove()">
+        <figcaption class="ph-cap" data-i18n="ph.caption">イメージ写真</figcaption>
+      </figure>
+    </div>
+
+    <div class="cycle-wrap" data-anim>
+    <ol class="cycle" data-stagger>
+      <li class="cycle-step"><i class="cycle-bar" aria-hidden="true"></i>
+        <span class="cycle-icon" aria-hidden="true"><svg class="icon"><use href="#i-help"/></svg></span>
+        <p class="num">STEP 01</p>
+        <h3><span data-i18n="cycle.1.title">困る</span><small data-i18n="cycle.1.sub">STRUGGLE</small></h3>
+        <p data-i18n="cycle.1.text">人手不足、技能伝承、教育のばらつき。自分たちの工場で起きている課題が、開発の出発点です。</p>
+      </li>
+      <li class="cycle-step"><i class="cycle-bar" aria-hidden="true"></i>
+        <span class="cycle-icon" aria-hidden="true"><svg class="icon"><use href="#i-tool"/></svg></span>
+        <p class="num">STEP 02</p>
+        <h3><span data-i18n="cycle.2.title">試す</span><small data-i18n="cycle.2.sub">TRY</small></h3>
+        <p data-i18n="cycle.2.text">つくった仕組みは、まず自社の量産ラインで使います。現場の反応が、いちばん正直な評価です。</p>
+      </li>
+      <li class="cycle-step"><i class="cycle-bar" aria-hidden="true"></i>
+        <span class="cycle-icon" aria-hidden="true"><svg class="icon"><use href="#i-star"/></svg></span>
+        <p class="num">STEP 03</p>
+        <h3><span data-i18n="cycle.3.title">磨く</span><small data-i18n="cycle.3.sub">REFINE</small></h3>
+        <p data-i18n="cycle.3.text">現場から出る小さな不満を、次の改善材料に。量産に耐える形になるまで磨き込みます。</p>
+      </li>
+    </ol>
+    <div class="cycle-return" aria-hidden="true"><i class="cycle-dot"></i><span><svg class="icon"><use href="#i-loop"/></svg><span data-i18n="cycle.return">そして、また現場へ</span></span></div>
+    </div>
+    <p class="cycle-caption" data-i18n="cycle.caption">現場で困り、現場で試し、現場で磨く。それが iFactiS のつくり方です。</p>
+
+  </div>
+</section>
+
+<!-- ======================================================================
+     Products
+     ====================================================================== -->
+<section class="sec" id="products" aria-labelledby="products-title">
+  <div class="container">
+    <div class="pm-head">
+      <div class="pm-head-text reveal">
+        <p class="eyebrow">Solutions by Process<span class="jp">工程別ソリューション</span></p>
+        <h2 class="sec-title" id="products-title" data-i18n="products.title">工程ごとに、<br>ちょうどいい道具を。</h2>
+        <p class="sec-lead" data-i18n="products.lead2">製造の各工程で、どのサービスが役立つかを一覧で確認できます。すべてを一度に変える必要はありません。いちばん困っている工程から、小さく始められます。</p>
+      </div>
+      <!-- マスコット：工程をご案内 -->
+      <div class="mascot mascot--guide" aria-hidden="true" data-anim>
+        <picture><source srcset="assets/img/mascot/mascot-guide.webp" type="image/webp"><img src="assets/img/mascot/mascot-guide.png" alt="" width="388" height="440" loading="lazy" decoding="async"></picture>
+        <p class="mascot-bubble tail-r" data-i18n="mascot.guide2">工程ごとに、役立つサービスを<br>ご案内します！</p>
+      </div>
+    </div>
+
+    <!-- 工程でしぼり込み（main.js） -->
+    <div class="pfilter" aria-live="polite">
+      <p class="pf-hint"><svg class="icon"><use href="#i-check"/></svg><span data-i18n="products.hint2">工程名を押すと、その工程で使える製品にしぼり込めます。</span></p>
+      <p class="pf-status"><span class="pf-text"></span><button type="button" class="pf-reset"><svg class="icon"><use href="#i-x"/></svg><span data-i18n="products.reset">すべて表示</span></button></p>
+    </div>
+
+    <!-- 工程 × 製品のマトリクス（製品名は各製品サイトへのリンク） -->
+    <div class="pm-wrap">
+      <table class="pm" data-anim>
+        <caption class="sr-only" data-i18n="a11y.pm">工程別ソリューション一覧</caption>
+        <thead>
+          <tr>
+          <th scope="col" class="pm-corner">PRODUCT <span>/</span> STAGE <span class="pm-corner-arrow">→</span></th>
+          <th scope="col" data-stage="plan" data-col="plan" style="--i:0"><button type="button" class="pm-col" aria-pressed="false"><span class="pn">01</span><span class="pm-jp" data-i18n="stage.plan">生産計画</span><small>PLAN</small></button><i class="pm-track" aria-hidden="true"></i></th>
+          <th scope="col" data-stage="source" data-col="source" style="--i:1"><button type="button" class="pm-col" aria-pressed="false"><span class="pn">02</span><span class="pm-jp" data-i18n="stage.source">調達</span><small>SOURCE</small></button></th>
+          <th scope="col" data-stage="make" data-col="make" style="--i:2"><button type="button" class="pm-col" aria-pressed="false"><span class="pn">03</span><span class="pm-jp" data-i18n="stage.make">製造</span><small>MAKE</small></button></th>
+          <th scope="col" data-stage="quality" data-col="quality" style="--i:3"><button type="button" class="pm-col" aria-pressed="false"><span class="pn">04</span><span class="pm-jp" data-i18n="stage.quality">品質管理</span><small>QUALITY</small></button></th>
+          <th scope="col" data-stage="maintain" data-col="maintain" style="--i:4"><button type="button" class="pm-col" aria-pressed="false"><span class="pn">05</span><span class="pm-jp" data-i18n="stage.maintain">設備保全</span><small>MAINTAIN</small></button></th>
+          <th scope="col" data-stage="deliver" data-col="deliver" style="--i:5"><button type="button" class="pm-col" aria-pressed="false"><span class="pn">06</span><span class="pm-jp" data-i18n="stage.logistics">物流・出荷</span><small>LOGISTICS</small></button></th>
+          </tr>
+        </thead>
+        <tbody data-stagger>
+        <tr data-stages="plan source make deliver">
+          <th scope="row" class="pm-prod">
+            <a class="pm-plink" href="https://lp.ifactis.com/nexus/" target="_blank" rel="noopener" data-track="product_nexus">
+              <svg class="pm-logo" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#pl-nexus"/></svg>
+              <span class="pm-ptext"><span class="pm-pname"><small>iFactiS</small>Nexus<svg class="icon"><use href="#i-ext"/></svg></span><span class="pm-pcat" data-i18n="pr.nexus.cat">生産管理</span></span>
+            </a>
+          </th>
+          <td data-col="plan" data-label="生産計画" data-i18n-attr="data-label:stage.plan"><span class="pm-pill is-main" data-i18n="pm.nexus.plan">受注・計画</span></td>
+          <td data-col="source" data-label="調達" data-i18n-attr="data-label:stage.source"><span class="pm-pill is-rel" data-i18n="pm.nexus.source">材料手配</span></td>
+          <td data-col="make" data-label="製造" data-i18n-attr="data-label:stage.make"><span class="pm-pill is-main" data-i18n="pm.nexus.make">進捗・実績</span></td>
+          <td data-col="quality"></td>
+          <td data-col="maintain"></td>
+          <td data-col="deliver" data-label="物流・出荷" data-i18n-attr="data-label:stage.logistics"><span class="pm-pill is-rel" data-i18n="pm.nexus.deliver">納品・原価</span></td>
+        </tr>
+        <tr data-stages="plan make">
+          <th scope="row" class="pm-prod">
+            <a class="pm-plink" href="https://lp.ifactis.com/worktag/" target="_blank" rel="noopener" data-track="product_worktag">
+              <svg class="pm-logo" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#pl-worktag"/></svg>
+              <span class="pm-ptext"><span class="pm-pname"><small>iFactiS</small>WorkTag<svg class="icon"><use href="#i-ext"/></svg></span><span class="pm-pcat" data-i18n="pr.worktag.cat">生産計画・作業指示</span></span>
+            </a>
+          </th>
+          <td data-col="plan" data-label="生産計画" data-i18n-attr="data-label:stage.plan"><span class="pm-pill is-main" data-i18n="pm.worktag.plan">生産計画</span></td>
+          <td data-col="source"></td>
+          <td data-col="make" data-label="製造" data-i18n-attr="data-label:stage.make"><span class="pm-pill is-main" data-i18n="pm.worktag.make">作業指示タグ</span></td>
+          <td data-col="quality"></td>
+          <td data-col="maintain"></td>
+          <td data-col="deliver"></td>
+        </tr>
+        <tr data-stages="plan make">
+          <th scope="row" class="pm-prod">
+            <a class="pm-plink" href="https://lp.ifactis.com/talentline/" target="_blank" rel="noopener" data-track="product_talentline">
+              <svg class="pm-logo" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#pl-talentline"/></svg>
+              <span class="pm-ptext"><span class="pm-pname"><small>iFactiS</small>TalentLine<svg class="icon"><use href="#i-ext"/></svg></span><span class="pm-pcat" data-i18n="pr.talentline.cat">人員配置</span></span>
+            </a>
+          </th>
+          <td data-col="plan" data-label="生産計画" data-i18n-attr="data-label:stage.plan"><span class="pm-pill is-rel" data-i18n="pm.talentline.plan">必要人数</span></td>
+          <td data-col="source"></td>
+          <td data-col="make" data-label="製造" data-i18n-attr="data-label:stage.make"><span class="pm-pill is-main" data-i18n="pm.talentline.make">人員配置</span></td>
+          <td data-col="quality"></td>
+          <td data-col="maintain"></td>
+          <td data-col="deliver"></td>
+        </tr>
+        <tr data-stages="source make">
+          <th scope="row" class="pm-prod">
+            <a class="pm-plink" href="https://lp.ifactis.com/stockcore/" target="_blank" rel="noopener" data-track="product_stockcore">
+              <svg class="pm-logo" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#pl-stockcore"/></svg>
+              <span class="pm-ptext"><span class="pm-pname"><small>iFactiS</small>StockCore<svg class="icon"><use href="#i-ext"/></svg></span><span class="pm-pcat" data-i18n="pr.stockcore.cat">材料・在庫管理</span></span>
+            </a>
+          </th>
+          <td data-col="plan"></td>
+          <td data-col="source" data-label="調達" data-i18n-attr="data-label:stage.source"><span class="pm-pill is-main" data-i18n="pm.stockcore.source">計量・置き場</span></td>
+          <td data-col="make" data-label="製造" data-i18n-attr="data-label:stage.make"><span class="pm-pill is-rel" data-i18n="pm.stockcore.make">使用量・歩留まり</span></td>
+          <td data-col="quality"></td>
+          <td data-col="maintain"></td>
+          <td data-col="deliver"></td>
+        </tr>
+        <tr data-stages="make quality">
+          <th scope="row" class="pm-prod">
+            <a class="pm-plink" href="https://lp.ifactis.com/vision/" target="_blank" rel="noopener" data-track="product_vision">
+              <svg class="pm-logo" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#pl-vision"/></svg>
+              <span class="pm-ptext"><span class="pm-pname"><small>iFactiS</small>Vision<svg class="icon"><use href="#i-ext"/></svg></span><span class="pm-pcat" data-i18n="pr.vision.cat">カメラによる見守り</span></span>
+            </a>
+          </th>
+          <td data-col="plan"></td>
+          <td data-col="source"></td>
+          <td data-col="make" data-label="製造" data-i18n-attr="data-label:stage.make"><span class="pm-pill is-rel" data-i18n="pm.vision.make">作業の見守り</span></td>
+          <td data-col="quality" data-label="品質管理" data-i18n-attr="data-label:stage.quality"><span class="pm-pill is-main" data-i18n="pm.vision.quality">検査抜けの検知</span></td>
+          <td data-col="maintain"></td>
+          <td data-col="deliver"></td>
+        </tr>
+        <tr data-stages="quality maintain">
+          <th scope="row" class="pm-prod">
+            <a class="pm-plink" href="https://lp.ifactis.com/knowledge/20260911/" target="_blank" rel="noopener" data-track="product_knowledge">
+              <svg class="pm-logo" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#pl-knowledge"/></svg>
+              <span class="pm-ptext"><span class="pm-pname"><small>iFactiS</small>Knowledge<svg class="icon"><use href="#i-ext"/></svg></span><span class="pm-pcat" data-i18n="pr.knowledge.cat">ナレッジ検索</span></span>
+            </a>
+          </th>
+          <td data-col="plan"></td>
+          <td data-col="source"></td>
+          <td data-col="make"></td>
+          <td data-col="quality" data-label="品質管理" data-i18n-attr="data-label:stage.quality"><span class="pm-pill is-rel" data-i18n="pm.knowledge.quality">規格・報告書</span></td>
+          <td data-col="maintain" data-label="設備保全" data-i18n-attr="data-label:stage.maintain"><span class="pm-pill is-main" data-i18n="pm.knowledge.maintain">異常時の初動</span></td>
+          <td data-col="deliver"></td>
+        </tr>
+        <tr data-stages="make deliver">
+          <th scope="row" class="pm-prod">
+            <a class="pm-plink" href="https://lp.ifactis.com/movex/" target="_blank" rel="noopener" data-track="product_movex">
+              <svg class="pm-logo" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#pl-movex"/></svg>
+              <span class="pm-ptext"><span class="pm-pname"><small>iFactiS</small>MoveX<svg class="icon"><use href="#i-ext"/></svg></span><span class="pm-pcat" data-i18n="pr.movex.cat">自動搬送</span></span>
+            </a>
+          </th>
+          <td data-col="plan"></td>
+          <td data-col="source"></td>
+          <td data-col="make" data-label="製造" data-i18n-attr="data-label:stage.make"><span class="pm-pill is-rel" data-i18n="pm.movex.make">空容器の供給</span></td>
+          <td data-col="quality"></td>
+          <td data-col="maintain"></td>
+          <td data-col="deliver" data-label="物流・出荷" data-i18n-attr="data-label:stage.logistics"><span class="pm-pill is-main" data-i18n="pm.movex.deliver">完成品の搬送</span></td>
+        </tr>
+        <tr data-stages="deliver">
+          <th scope="row" class="pm-prod">
+            <a class="pm-plink" href="https://lp.ifactis.com/labelpro/" target="_blank" rel="noopener" data-track="product_labelpro">
+              <svg class="pm-logo" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#pl-labelpro"/></svg>
+              <span class="pm-ptext"><span class="pm-pname"><small>iFactiS</small>LabelPro<svg class="icon"><use href="#i-ext"/></svg></span><span class="pm-pcat" data-i18n="pr.labelpro.cat">納入ラベル発行</span></span>
+            </a>
+          </th>
+          <td data-col="plan"></td>
+          <td data-col="source"></td>
+          <td data-col="make"></td>
+          <td data-col="quality"></td>
+          <td data-col="maintain"></td>
+          <td data-col="deliver" data-label="物流・出荷" data-i18n-attr="data-label:stage.logistics"><span class="pm-pill is-main" data-i18n="pm.labelpro.deliver">納入ラベル発行</span></td>
+        </tr>
+        <tr data-stages="make deliver">
+          <th scope="row" class="pm-prod">
+            <a class="pm-plink" href="https://lp.ifactis.com/smartpackage/" target="_blank" rel="noopener" data-track="product_smartpackage">
+              <svg class="pm-logo" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#pl-smartpackage"/></svg>
+              <span class="pm-ptext"><span class="pm-pname"><small>iFactiS</small>SmartPackage<svg class="icon"><use href="#i-ext"/></svg></span><span class="pm-pcat" data-i18n="pr.smartpackage.cat">パレット・通い箱管理</span></span>
+            </a>
+          </th>
+          <td data-col="plan"></td>
+          <td data-col="source"></td>
+          <td data-col="make" data-label="製造" data-i18n-attr="data-label:stage.make"><span class="pm-pill is-rel" data-i18n="pm.smartpackage.make">生産情報と紐づけ</span></td>
+          <td data-col="quality"></td>
+          <td data-col="maintain"></td>
+          <td data-col="deliver" data-label="物流・出荷" data-i18n-attr="data-label:stage.logistics"><span class="pm-pill is-main" data-i18n="pm.smartpackage.deliver">出荷・返却の記録</span></td>
+        </tr>
+        <tr class="pm-consult" data-stages="plan source make quality maintain deliver">
+          <th scope="row" class="pm-prod">
+            <span class="pm-thumb pm-thumb--icon pm-thumb--consult"><svg class="icon"><use href="#i-chat"/></svg></span>
+            <span class="pm-ptext"><span class="pm-pname pm-pname--jp" data-i18n="p4.name">個別のご相談</span><span class="pm-pcat" data-i18n="pm.consult.sub">どの製品が合うか分からない方へ</span></span>
+          </th>
+          <td colspan="6" class="pm-span">
+            <div class="pm-span-inner">
+              <span class="pm-pill is-all" data-i18n="pm.all">全工程を横断</span>
+              <p data-i18n="pm.consult.text">現場の状況を伺い、工程をまたいだ課題の進め方を一緒に考えます。まだ整理できていない困りごとも大歓迎です。</p>
+              <a class="btn btn-red btn-sm" href="#contact" data-track="product_consult"><span data-i18n="cta.talk">相談する</span><svg class="icon icon-arrow"><use href="#i-arrow"/></svg></a>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ul class="pm-legend">
+      <li><i class="lg lg-main"></i><span data-i18n="pm.lgMain">主な活用工程</span></li>
+      <li><i class="lg lg-rel"></i><span data-i18n="pm.lgRel">関連する工程</span></li>
+      <li><i class="lg lg-all"></i><span data-i18n="pm.all">全工程を横断</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======================================================================
+     Cases
+     ====================================================================== -->
+<section class="sec sec-soft" id="cases" aria-labelledby="cases-title">
+  <div class="container">
+    <div class="sec-head-row reveal">
+      <div>
+        <p class="eyebrow">Case Studies<span class="jp">導入事例</span></p>
+        <h2 class="sec-title" id="cases-title" data-i18n="cases.title">現場で、使われています。</h2>
+      </div>
+      <p class="sec-lead" data-i18n="cases.lead">まずは、私たち自身の工場から。国内外の量産現場で、iFactiSは日々の仕事を支えています。</p>
+    </div>
+
+    <article class="case-feature reveal">
+      <figure class="ph case-photo">
+        <div class="ph-empty"><svg class="icon"><use href="#i-camera"/></svg>一井グループ 検査工程の写真<br>（撮影予定）</div>
+        <img src="assets/img/case-ichii.jpg" alt="工場で作業する作業者" data-i18n-attr="alt:alt.case" onerror="this.remove()">
+        <figcaption class="ph-cap" data-i18n="ph.caption">イメージ写真</figcaption>
+      </figure>
+      <div class="case-body">
+        <div class="case-meta">
+          <span class="badge badge-blue">Vision</span>
+          <span class="badge badge-soft" data-i18n="badge.quality">品質・検査</span>
+          <span class="badge badge-line" data-i18n="badge.jpvn">日本・ベトナム</span>
+        </div>
+        <p class="case-company" data-i18n="case.company">一井グループ｜自動車部品製造（プレス・溶接）</p>
+        <h3 data-i18n="case.title">ベテラン検査員の“目”を基準化。<br class="br-pc">外国人作業者も、同じ基準で検査できるように。</h3>
+        <div class="ba">
+          <div class="ba-before"><b>BEFORE</b><span data-i18n="case.before">判定が人によってばらつき、最終判断は一部のベテラン頼み。教育もOJT任せだった。</span></div>
+          <div class="ba-after"><b>AFTER</b><span data-i18n="case.after">見本写真と基準を母国語で表示。誰が検査しても判定がそろい、教える側の負担も軽くなった。</span></div>
+        </div>
+        <blockquote class="case-quote"><span data-i18n="case.quote">「“あの人に聞かないと分からない”が、現場から減りました。」</span><cite data-i18n="case.cite">品質保証課 課長（インタビュー内容は仮）</cite></blockquote>
+        <div class="case-foot">
+          <a class="link-arrow" href="#" data-track="case_ichii"><span data-i18n="link.readCase">事例を読む</span><svg class="icon"><use href="#i-arrow"/></svg></a>
+          <!-- マスコット：成果に太鼓判 -->
+          <div class="mascot mascot--thumbs" aria-hidden="true" data-anim>
+            <picture><source srcset="assets/img/mascot/mascot-thumbsup.webp" type="image/webp"><img src="assets/img/mascot/mascot-thumbsup.png" alt="" width="357" height="440" loading="lazy" decoding="async"></picture>
+            <p class="mascot-bubble tail-r" data-i18n="mascot.thumbs">現場で、役立っています！</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="case-list">
+      <a class="case-card reveal" href="#" data-track="case_a">
+        <figure class="ph">
+          <div class="ph-empty"><svg class="icon"><use href="#i-camera"/></svg>導入先の写真</div>
+          <img src="assets/img/case-a.jpg" alt="" onerror="this.remove()">
+        </figure>
+        <div class="case-card-body">
+          <div class="case-meta"><span class="badge badge-blue">Nexus</span><span class="badge badge-line" data-i18n="badge.id">インドネシア</span></div>
+          <p class="case-company" data-i18n="caseA.company">金属加工メーカー A社</p>
+          <h4 data-i18n="caseA.title">紙の日報をやめて、入力を増やさずに生産実績を見える化。</h4>
+        </div>
+      </a>
+      <a class="case-card reveal" href="#" data-track="case_b">
+        <figure class="ph">
+          <div class="ph-empty"><svg class="icon"><use href="#i-camera"/></svg>導入先の写真</div>
+          <img src="assets/img/case-b.jpg" alt="" onerror="this.remove()">
+        </figure>
+        <div class="case-card-body">
+          <div class="case-meta"><span class="badge badge-blue">Vision</span><span class="badge badge-line" data-i18n="badge.jp">日本</span></div>
+          <p class="case-company" data-i18n="caseB.company">樹脂成形メーカー B社</p>
+          <h4 data-i18n="caseB.title">検査基準を写真で共有し、拠点間の判定のばらつきを解消。</h4>
+        </div>
+      </a>
+      <a class="case-card reveal" href="#" data-track="case_c">
+        <figure class="ph">
+          <div class="ph-empty"><svg class="icon"><use href="#i-camera"/></svg>導入先の写真</div>
+          <img src="assets/img/case-c.jpg" alt="" onerror="this.remove()">
+        </figure>
+        <div class="case-card-body">
+          <div class="case-meta"><span class="badge badge-soft" data-i18n="badge.consult">個別相談</span><span class="badge badge-line" data-i18n="badge.vn">ベトナム</span></div>
+          <p class="case-company" data-i18n="caseC.company">電子部品メーカー C社</p>
+          <h4 data-i18n="caseC.title">作業手順をベトナム語で。新人が独り立ちするまでを短く。</h4>
+        </div>
+      </a>
+    </div>
+    <div class="cases-foot">
+      <p class="note" data-i18n="cases.note">※一井グループ以外の事例は、デザイン用のサンプルです。</p>
+      <a class="link-arrow" href="#" data-track="cases_all"><span data-i18n="link.allCases">導入事例をすべて見る</span><svg class="icon"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     Track record（導入実績・導入企業）
+     ・数値は確定後に差し替え。<b data-count="128">128</b> のように data-count を入れると、画面に入ったときにカウントアップ
+     ・ロゴは掲載許諾を得た企業のものに差し替え：<li class="client"><img src="assets/img/logos/xxx.svg" alt="株式会社〇〇"></li>
+     ====================================================================== -->
+<section class="sec record" id="record" aria-labelledby="record-title">
+  <div class="container">
+    <div class="sec-head-row reveal">
+      <div>
+        <p class="eyebrow">Track Record<span class="jp">導入実績</span></p>
+        <h2 class="sec-title" id="record-title" data-i18n="record.title">現場とともに、<br>積み上げてきた実績。</h2>
+      </div>
+      <p class="sec-lead" data-i18n="record.lead">自社工場での実証から始まり、いまは業種も国も異なる製造現場で使われています。</p>
+    </div>
+
+    <dl class="record-stats reveal">
+      <div class="record-stat">
+        <dt data-i18n="record.s1">累計導入社数</dt>
+        <dd><b>000</b><span data-i18n="record.s1u">社＋</span></dd>
+      </div>
+      <div class="record-stat">
+        <dt data-i18n="record.s2">継続利用率</dt>
+        <dd><b>00.0</b><span data-i18n="record.s2u">％以上</span></dd>
+      </div>
+      <div class="record-stat record-stat--inds">
+        <dt data-i18n="record.s3">対応業界</dt>
+        <dd>
+          <ul class="record-inds">
+            <li data-i18n="ind.auto">自動車部品</li>
+            <li data-i18n="ind.elec">電子部品</li>
+            <li data-i18n="ind.metal">金属加工</li>
+            <li data-i18n="ind.resin">樹脂成形</li>
+            <li data-i18n="ind.food">食品</li>
+            <li data-i18n="ind.chem">化学</li>
+            <li data-i18n="ind.logi">物流</li>
+          </ul>
+        </dd>
+      </div>
+    </dl>
+
+    <div class="record-logos reveal">
+      <div class="record-logos-head">
+        <p data-i18n="record.logos">主な導入企業</p>
+        <span class="note" data-i18n="record.logosNote">※ロゴはデザイン用のダミーです</span>
+      </div>
+      <div class="logo-marquee">
+        <ul class="logo-track">
+          <li class="client"><svg class="client-mark" aria-hidden="true"><use href="#lg-hex"/></svg><span class="client-name">COMPANY A</span></li>
+          <li class="client"><svg class="client-mark" aria-hidden="true"><use href="#lg-ring"/></svg><span class="client-name client-name--title">Company B</span></li>
+          <li class="client"><svg class="client-mark" aria-hidden="true"><use href="#lg-bars"/></svg><span class="client-name client-name--light">COMPANY C</span></li>
+          <li class="client"><svg class="client-mark" aria-hidden="true"><use href="#lg-diamond"/></svg><span class="client-name">COMPANY D</span></li>
+          <li class="client"><svg class="client-mark" aria-hidden="true"><use href="#lg-plus"/></svg><span class="client-name client-name--title">Company E</span></li>
+        </ul>
+      </div>
+      <div class="logo-marquee is-reverse">
+        <ul class="logo-track">
+          <li class="client"><svg class="client-mark" aria-hidden="true"><use href="#lg-tri"/></svg><span class="client-name client-name--light">COMPANY F</span></li>
+          <li class="client"><svg class="client-mark" aria-hidden="true"><use href="#lg-ring"/></svg><span class="client-name">COMPANY G</span></li>
+          <li class="client"><svg class="client-mark" aria-hidden="true"><use href="#lg-hex"/></svg><span class="client-name client-name--title">Company H</span></li>
+          <li class="client"><svg class="client-mark" aria-hidden="true"><use href="#lg-diamond"/></svg><span class="client-name client-name--light">COMPANY I</span></li>
+          <li class="client"><svg class="client-mark" aria-hidden="true"><use href="#lg-bars"/></svg><span class="client-name">COMPANY J</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="note record-note" data-i18n="record.note">※数値・業界・ロゴはデザイン用の仮表示です。確定後に、掲載許諾を得た内容に差し替えてください。</p>
+  </div>
+</section>
+
+<!-- ======================================================================
+     Events & News
+     ====================================================================== -->
+<section class="sec" aria-label="イベント情報とニュース" data-i18n-attr="aria-label:a11y.info">
+  <div class="container info-grid">
+    <div id="events" class="reveal">
+      <div class="info-head">
+        <h2><small data-i18n="events.kicker">EVENTS</small><span data-i18n="events.title">イベント情報</span></h2>
+        <a class="link-arrow" href="#" data-track="events_all"><span data-i18n="link.viewAll">一覧へ</span><svg class="icon"><use href="#i-arrow"/></svg></a>
+      </div>
+      <a class="event" href="#" data-track="event_1210">
+        <span class="cal"><span class="cal-m">DEC</span><span class="cal-d">10</span><span class="cal-w">THU</span></span>
+        <div>
+          <div class="event-tags"><span class="badge badge-red" data-i18n="badge.open">受付中</span><span class="badge badge-soft" data-i18n="badge.seminar">セミナー</span></div>
+          <h3 data-i18n="ev1.title">現場から始める生産管理セミナー ── ベテラン頼みの工程を、仕組みに変える第一歩</h3>
+          <p class="event-info"><span><svg class="icon"><use href="#i-clock"/></svg><span data-i18n="ev1.time">14:00–15:00</span></span><span><svg class="icon"><use href="#i-pin"/></svg><span data-i18n="ev1.place">オンライン・参加無料</span></span></p>
+        </div>
+      </a>
+      <a class="event" href="#" data-track="event_0120">
+        <span class="cal"><span class="cal-m">JAN</span><span class="cal-d">20</span><span class="cal-w">–22</span></span>
+        <div>
+          <div class="event-tags"><span class="badge badge-blue" data-i18n="badge.expo">展示会</span></div>
+          <h3 data-i18n="ev2.title">製造業向け展示会（名称仮）に出展します。ブースで「Vision」を実演</h3>
+          <p class="event-info"><span><svg class="icon"><use href="#i-clock"/></svg>2027.01.20–22</span><span><svg class="icon"><use href="#i-pin"/></svg><span data-i18n="ev2.place">会場（確定後に掲載）</span></span></p>
+        </div>
+      </a>
+      <a class="event" href="#" data-track="event_0218">
+        <span class="cal"><span class="cal-m">FEB</span><span class="cal-d">18</span><span class="cal-w">THU</span></span>
+        <div>
+          <div class="event-tags"><span class="badge badge-line" data-i18n="badge.tour">工場見学会</span></div>
+          <h3 data-i18n="ev3.title">一井グループ工場見学会 ── 量産ラインで、iFactiSが使われている様子をご覧いただけます</h3>
+          <p class="event-info"><span><svg class="icon"><use href="#i-clock"/></svg><span data-i18n="ev3.time">10:00–12:00</span></span><span><svg class="icon"><use href="#i-pin"/></svg><span data-i18n="ev3.place">一井グループ工場（予定）</span></span></p>
+        </div>
+      </a>
+    </div>
+
+    <div id="news" class="reveal">
+      <div class="info-head">
+        <h2><small data-i18n="news.kicker">NEWS</small><span data-i18n="news.title">ニュース</span></h2>
+        <a class="link-arrow" href="#" data-track="news_all"><span data-i18n="link.viewAll">一覧へ</span><svg class="icon"><use href="#i-arrow"/></svg></a>
+      </div>
+      <a class="news-item" href="#"><time datetime="2026-11-10">2026.11.10</time><span class="badge badge-blue" data-i18n="badge.notice">お知らせ</span><p data-i18n="news.1">iFactiS サービスサイトを公開しました</p><svg class="icon"><use href="#i-arrow"/></svg></a>
+      <a class="news-item" href="#"><time datetime="2026-11-04">2026.11.04</time><span class="badge badge-soft" data-i18n="badge.event">イベント</span><p data-i18n="news.2">12月10日（木）オンラインセミナー「現場から始める生産管理」の受付を開始しました</p><svg class="icon"><use href="#i-arrow"/></svg></a>
+      <a class="news-item" href="#"><time datetime="2026-10-22">2026.10.22</time><span class="badge badge-line" data-i18n="badge.press">プレス</span><p data-i18n="news.3">一井グループのベトナム工場で「Vision」の本格運用を開始しました</p><svg class="icon"><use href="#i-arrow"/></svg></a>
+      <a class="news-item" href="#"><time datetime="2026-10-06">2026.10.06</time><span class="badge badge-line" data-i18n="badge.media">メディア</span><p data-i18n="news.4">業界紙に、iFactiSの開発背景についてのインタビューが掲載されました</p><svg class="icon"><use href="#i-arrow"/></svg></a>
+      <a class="news-item" href="#"><time datetime="2026-09-18">2026.09.18</time><span class="badge badge-blue" data-i18n="badge.notice">お知らせ</span><p data-i18n="news.5">現場画面のインドネシア語・ベトナム語表示に対応しました</p><svg class="icon"><use href="#i-arrow"/></svg></a>
+      <p class="note" style="margin-top:16px" data-i18n="news.note">※掲載内容はデザイン用のサンプルです。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     Contact（価格は掲載せず、お問い合わせ導線のみ）
+     ====================================================================== -->
+<section class="sec contact grid-paper" id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="sec-head-center reveal">
+      <p class="eyebrow">Contact<span class="jp">お問い合わせ</span></p>
+      <h2 class="sec-title" id="contact-title" data-i18n="contact.title">まずは、現場の話を<br>聞かせてください。</h2>
+      <p class="sec-lead" data-i18n="contact.lead">「何から手をつければいいか分からない」段階でも大丈夫です。売り込みではなく、現場の状況を伺うところから始めます。</p>
+    </div>
+
+    <!-- マスコット：2つの窓口をご紹介 -->
+    <div class="mascot mascot--present" aria-hidden="true" data-anim>
+      <picture><source srcset="assets/img/mascot/mascot-present.webp" type="image/webp"><img src="assets/img/mascot/mascot-present.png" alt="" width="474" height="440" loading="lazy" decoding="async"></picture>
+      <p class="mascot-bubble tail-l" data-i18n="mascot.present">どちらからでも、<br>お気軽にどうぞ！</p>
+    </div>
+
+    <div class="contact-grid">
+      <article class="contact-card reveal">
+        <p class="contact-kicker">FOR MANUFACTURERS</p>
+        <h3 data-i18n="c1.title">業務改善のご相談</h3>
+        <p data-i18n="c1.text">人手不足、属人化、教育、品質のばらつき。工程や部署をまたぐお悩みも、まずはそのままお聞かせください。</p>
+        <ul class="contact-points">
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="c1.p1">現場の状況を伺い、進め方をご提案します</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="c1.p2">一部の工程・部署から小さく試せます</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="c1.p3">海外工場（インドネシア・ベトナムなど）もご相談ください</span></li>
+        </ul>
+        <a class="btn btn-red" href="#" data-track="contact_consult"><span data-i18n="c1.btn">相談フォームへ</span><svg class="icon icon-arrow"><use href="#i-arrow"/></svg></a>
+      </article>
+
+      <article class="contact-card is-partner reveal">
+        <p class="contact-kicker">FOR PARTNERS</p>
+        <h3 data-i18n="c2.title">パートナー募集</h3>
+        <p data-i18n="c2.text">販売代理店、システムインテグレーター、コンサルティング会社など、iFactiSを一緒に現場へ届けてくださるパートナーを募集しています。</p>
+        <ul class="contact-points">
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="c2.p1">国内・ASEAN地域での販売／導入支援</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="c2.p2">製造業のお客様への共同提案</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="c2.p3">導入後の定着までを一緒に支援</span></li>
+        </ul>
+        <a class="btn btn-blue" href="#" data-track="contact_partner"><span data-i18n="c2.btn">パートナー募集について</span><svg class="icon icon-arrow"><use href="#i-arrow"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ======================================================================
+     Footer
+     ====================================================================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="logo" href="#top" aria-label="iFactiS トップへ" data-i18n-attr="aria-label:a11y.home">
+          <img class="logo-img" src="assets/img/logo-ifactis.png" alt="" width="400" height="88">
+        </a>
+        <p class="tagline" data-i18n="footer.tagline">現場の職人知を、誰でも使える仕組みに。</p>
+        <p data-i18n="footer.operator">運営：一井グループ<br>（運営会社名・所在地は確定後に掲載）</p>
+        <div class="sns" aria-label="公式SNS" data-i18n-attr="aria-label:a11y.sns">
+          <a href="#" aria-label="X（旧Twitter）" data-i18n-attr="aria-label:a11y.x" data-track="sns_x"><svg viewBox="0 0 24 24"><path d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.77L17.75 3zm-1.08 16.2h1.7L7.4 4.73H5.58L16.67 19.2z"/></svg></a>
+          <a href="#" aria-label="Facebook" data-track="sns_facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21h3z"/></svg></a>
+          <a href="#" aria-label="LinkedIn" data-track="sns_linkedin"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3V9.75zM9.5 9.75h3.8v1.54h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.05c0-1.2-.02-2.75-1.68-2.75-1.68 0-1.94 1.31-1.94 2.66V21h-4V9.75z"/></svg></a>
+          <a href="#" aria-label="YouTube" data-track="sns_youtube"><svg viewBox="0 0 24 24"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.27 5 12 5 12 5s-6.27 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.76 1.77C5.73 19 12 19 12 19s6.27 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg></a>
+        </div>
+      </div>
+
+      <nav class="fcol" aria-label="サイトマップ" data-i18n-attr="aria-label:a11y.sitemap">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="#top" data-i18n="f.home">トップ</a></li>
+          <li><a href="#about" data-i18n="f.about">iFactiSとは</a></li>
+          <li><a href="#cases" data-i18n="f.cases">導入事例</a></li>
+          <li><a href="#news" data-i18n="f.news">ニュース</a></li>
+          <li><a href="#events" data-i18n="f.events">イベント情報</a></li>
+        </ul>
+      </nav>
+      <nav class="fcol" aria-label="お問い合わせ" data-i18n-attr="aria-label:a11y.contact">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#contact" data-i18n="f.consult">業務改善のご相談</a></li>
+          <li><a href="#contact" data-i18n="f.partner">パートナー募集</a></li>
+        </ul>
+      </nav>
+      <nav class="fcol fcol-products" aria-label="製品サイト" data-i18n-attr="aria-label:a11y.productsNav">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="https://lp.ifactis.com/nexus/" target="_blank" rel="noopener" data-track="footer_nexus">Nexus<svg class="icon"><use href="#i-ext"/></svg></a></li>
+          <li><a href="https://lp.ifactis.com/worktag/" target="_blank" rel="noopener" data-track="footer_worktag">WorkTag<svg class="icon"><use href="#i-ext"/></svg></a></li>
+          <li><a href="https://lp.ifactis.com/talentline/" target="_blank" rel="noopener" data-track="footer_talentline">TalentLine<svg class="icon"><use href="#i-ext"/></svg></a></li>
+          <li><a href="https://lp.ifactis.com/stockcore/" target="_blank" rel="noopener" data-track="footer_stockcore">StockCore<svg class="icon"><use href="#i-ext"/></svg></a></li>
+          <li><a href="https://lp.ifactis.com/vision/" target="_blank" rel="noopener" data-track="footer_vision">Vision<svg class="icon"><use href="#i-ext"/></svg></a></li>
+          <li><a href="https://lp.ifactis.com/knowledge/20260911/" target="_blank" rel="noopener" data-track="footer_knowledge">Knowledge<svg class="icon"><use href="#i-ext"/></svg></a></li>
+          <li><a href="https://lp.ifactis.com/movex/" target="_blank" rel="noopener" data-track="footer_movex">MoveX<svg class="icon"><use href="#i-ext"/></svg></a></li>
+          <li><a href="https://lp.ifactis.com/labelpro/" target="_blank" rel="noopener" data-track="footer_labelpro">LabelPro<svg class="icon"><use href="#i-ext"/></svg></a></li>
+          <li><a href="https://lp.ifactis.com/smartpackage/" target="_blank" rel="noopener" data-track="footer_smartpackage">SmartPackage<svg class="icon"><use href="#i-ext"/></svg></a></li>
+        </ul>
+      </nav>
+      <nav class="fcol" aria-label="関連サイト" data-i18n-attr="aria-label:a11y.links">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="https://example.com/company" target="_blank" rel="noopener"><span data-i18n="f.company">会社概要</span><svg class="icon"><use href="#i-ext"/></svg></a></li>
+          <li><a href="https://example.com/recruit" target="_blank" rel="noopener"><span data-i18n="f.recruit">採用情報</span><svg class="icon"><use href="#i-ext"/></svg></a></li>
+          <li><a href="https://example.com/" target="_blank" rel="noopener"><span data-i18n="f.ichii">一井グループ</span><svg class="icon"><use href="#i-ext"/></svg></a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <a href="#" data-i18n="f.privacy">プライバシーポリシー</a>
+        <a href="#" data-i18n="f.sitepolicy">サイトポリシー</a>
+        <a href="#" data-i18n="f.cookie">Cookieポリシー</a>
+        <span class="copyright">© 2026 iFactiS</span>
+        <!-- デモ用仮写真のクレジット（本番写真に差し替え後は削除） -->
+        <span class="copyright">Demo photos: Shixart1985 / Wikimedia Commons (CC BY 2.0)</span>
+      </div>
+      <nav class="lang-pills" aria-label="言語切替" data-i18n-attr="aria-label:a11y.langSwitch">
+        <a href="?lang=ja" data-set-lang="ja" aria-current="true" lang="ja">JA</a>
+        <a href="?lang=en" data-set-lang="en" lang="en">EN</a>
+        <span class="is-disabled" aria-disabled="true" title="準備中 / Coming soon" lang="id">ID</span>
+        <span class="is-disabled" aria-disabled="true" title="準備中 / Coming soon" lang="vi">VI</span>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- SP 固定CTA -->
+<div class="sp-cta" aria-hidden="true">
+  <a class="btn btn-red" href="#contact" data-track="sp_fixed_contact" tabindex="-1"><span data-i18n="cta.consult">業務改善を相談する</span><svg class="icon icon-arrow"><use href="#i-arrow"/></svg></a>
+</div>
+
+<script src="assets/js/i18n.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
